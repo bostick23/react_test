@@ -2,25 +2,18 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      objectList: [
-        {
-          id: 0,
-          value: "A",
-        },
-        {
-          id: 1,
-          value: "B",
-        },
-        {
-          id: 2,
-          value: "C",
-        },
-        {
-          id: 3,
-          value: "D",
-        },
-      ],
+      objectList: [],
+      howmany: 0,
     };
+  }
+  componentDidMount() {
+    setInterval(() => {
+      const n = this.state.howmany;
+      this.setState({
+        objectList: [...this.state.objectList, { id: n + 1, value: n + 1 }],
+        howmany: n + 1,
+      });
+    }, 2000);
   }
   render() {
     const { objectList } = this.state;
